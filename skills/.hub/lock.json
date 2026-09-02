@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "installed": {
+    "grill-me": {
+      "source": "official",
+      "identifier": "official/software-development/grill-me",
+      "trust_level": "builtin",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:cc1feeba5b6c6a2b",
+      "install_path": "software-development/grill-me",
+      "files": [
+        "SKILL.md"
+      ],
+      "metadata": {},
+      "scan_provenance": {
+        "source": "official",
+        "source_url": "official/software-development/grill-me",
+        "bundle_hash": "sha256:cc1feeba5b6c6a2b18e1335b52d2ec2cfba1102eb571fe55079ce57b89ae5aaf",
+        "scanner_version": "skills-guard-v2",
+        "verdict": "safe",
+        "trust_level": "builtin",
+        "findings": [],
+        "rules": [],
+        "scanned_at": "2026-09-02T11:35:13.527057+00:00",
+        "summary": "grill-me: clean scan, no threats detected",
+        "fresh": true
+      },
+      "installed_at": "2026-09-02T11:35:16.431314+00:00",
+      "updated_at": "2026-09-02T11:35:16.431314+00:00"
+    },
+    "brainstorming": {
+      "source": "skills.sh",
+      "identifier": "skills-sh/obra/superpowers/brainstorming",
+      "trust_level": "community",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:6b576faaf61f3804",
+      "install_path": "brainstorming",
+      "files": [
+        "SKILL.md",
+        "scripts/frame-template.html",
+        "scripts/helper.js",
+        "scripts/server.cjs",
+        "scripts/start-server.sh",
+        "scripts/stop-server.sh",
+        "spec-document-reviewer-prompt.md",
+        "visual-companion.md"
+      ],
+      "metadata": {
+        "source_url": "https://github.com/obra/superpowers/tree/b36e0829c6d0140e93cfef2ca599b1b07d4a7797/skills/brainstorming",
+        "source_revision": "b36e0829c6d0140e93cfef2ca599b1b07d4a7797"
+      },
+      "scan_provenance": {
+        "source": "skills-sh/obra/superpowers/brainstorming",
+        "source_url": "https://github.com/obra/superpowers/tree/b36e0829c6d0140e93cfef2ca599b1b07d4a7797/skills/brainstorming",
+        "bundle_hash": "sha256:6b576faaf61f3804190b1f080882d1156bb61c27aecf94c58f4c6e06cf0e5722",
+        "scanner_version": "skills-guard-v2",
+        "verdict": "safe",
+        "trust_level": "community",
+        "findings": [],
+        "rules": [],
+        "scanned_at": "2026-09-02T11:38:31.341619+00:00",
+        "summary": "brainstorming: clean scan, no threats detected",
+        "fresh": true
+      },
+      "installed_at": "2026-09-02T11:38:48.196323+00:00",
+      "updated_at": "2026-09-02T11:38:48.196323+00:00"
+    }
+  }
+}

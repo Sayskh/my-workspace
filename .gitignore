@@ -1,0 +1,59 @@
+# config.yaml - BOLEH (settings only, no secrets)
+# SOUL.md - BOLEH (persona/agent instructions)
+# skills/ - BOLEH (Reusable skill files)
+# memories/ - BOLEH (Notes & memory entries)
+
+# TAPI FILE-FILE INI TIDAK BOLEH DI-COMMIT:
+# - .env (API keys & secrets)
+# - auth.json (OAuth tokens & credentials)
+# - auth.lock
+# - *.lock files
+# - cache/, runtime/ (runtime caches)
+# - state.db (SQLite sessions database)
+# - kanban.db (Kanban state DB)
+# - logs/, cron/ (logs & cron DB)
+# - audio_cache/, image_cache/ (media caches)
+# - sessions/ (session transcripts)
+# - pending_messages/, platforms/ (platform routing state)
+# - gateway.*, install_id, *.etag, *.json cache files
+# - .hermes_history
+
+.env
+auth.json
+auth.lock
+*.lock
+cache/
+runtime/
+state.db
+state.db-shm
+state.db-wal
+kanban.db
+kanban.db-shm
+kanban.db-wal
+logs/
+cron/
+audio_cache/
+image_cache/
+sessions/
+pending_messages/
+platforms/
+gateway.lock
+gateway.pid
+gateway_state.json
+gateway-starts.log
+install_id
+install_id.lock
+models_dev_cache.etag
+models_dev_cache.json
+ollama_cloud_models_cache.json
+provider_models_cache.json
+context_length_cache.yaml
+channel_directory.json
+.update_check
+.hermes_history
+shared/
+skills/*/__pycache__/
+skills/*/.DS_Store
+.memories/*/__pycache__/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,16 @@
+model:
+  default: upstage/solar-pro4:free
+  provider: nous
+  base_url: https://inference-api.nousresearch.com/v1
+web:
+  backend: nous
+browser:
+  cloud_provider: nous
+stt:
+  provider: nous
+_config_version: 39
+image_gen:
+  provider: nous
+onboarding:
+  seen:
+    busy_input_prompt: true
