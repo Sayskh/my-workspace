@@ -128,18 +128,23 @@ python sync.py all    # Bidirectional sync
 
 ```text
 hermes-agent/
-├── config.yaml               # Active Hermes config & MCP definitions
-├── SOUL.md                   # Default persona (Umi)
-├── profiles/                 # Squad profiles (SOUL.md, configs)
+├── config.yaml                 # Active Hermes config and MCP definitions
+├── SOUL.md                    # Default persona and global safety rules
+├── profiles/                  # Role-specific personas and configs
 │   ├── planner/
 │   ├── lead/
 │   ├── builder/
 │   ├── reviewer/
 │   └── ops/
-├── skills/                   # Loaded skill definitions
-│   ├── server/               # Homelab & infra administration
-│   ├── devops/               # Verification & CI/CD workflows
-│   └── software-development/ # Deep work, planning, code review
-├── docker-compose.server.yml # Containerized stack
-└── .env.example              # Environment variables template
+├── skills/                   # Skill definitions and organization docs
+│   ├── README.md              # Skill groups and loading rules
+│   ├── skill-catalog.yaml     # Human-maintained profile/skill index
+│   ├── server/                # Homelab and infrastructure
+│   ├── devops/                # Delivery and review workflows
+│   └── software-development/ # Coding, debugging, and testing
+├── memories/                 # Local memory state
+└── docker-compose.server.yml # Optional containerized deployment
 ```
+
+Local runtime files such as `.env`, `sync.py`, caches, logs, and state databases
+are intentionally ignored by Git and are not part of the repository contract.

@@ -1,0 +1,137 @@
+version: 3
+
+# Human-maintained navigation metadata.
+# Hermes discovers skills from SKILL.md; this file provides organization only.
+
+domains:
+  baseline:
+    description: Shared quality, ideation, planning, and controlled execution
+    directories:
+      - antislop
+      - baseline
+
+  engineering:
+    description: Software implementation, debugging, review, delivery, and agent tooling
+    directories:
+      - engineering/software-development
+      - engineering/devops
+      - agent-systems
+
+  creative:
+    description: UI/UX, visual design, motion, branding, and media creation
+    directories:
+      - creative/design
+      - media
+
+  operations:
+    description: Infrastructure, servers, networking, and web operations
+    directories:
+      - operations/server
+      - operations/web
+
+  knowledge:
+    description: Research, citations, notes, and knowledge capture
+    directories:
+      - knowledge/research
+      - knowledge/note-taking
+
+  productivity:
+    description: Documents, task management, Apple tools, and office workflows
+    directories:
+      - productivity
+      - productivity/apple
+
+  communications:
+    description: Email and social communication workflows
+    directories:
+      - communications/email
+      - communications/social-media
+
+  media:
+    description: Audio, video, and media processing
+    directories:
+      - media
+
+profiles:
+  default:
+    role: Orchestration, triage, and gateway entry point
+    preferred_domains: [baseline, engineering, knowledge, productivity]
+    core_skills:
+      - antislop
+      - baseline/ideation
+      - baseline/execution
+    on_demand_domains: [agent-systems, creative, operations, communications]
+    destructive_actions: explicit_approval_required
+
+  planner:
+    role: Requirements, user stories, scope, and acceptance criteria
+    preferred_domains: [baseline, knowledge, productivity]
+    core_skills:
+      - baseline/ideation
+      - baseline/execution
+      - knowledge/research/grounded-citations
+    on_demand_domains: [engineering, creative]
+    destructive_actions: explicit_approval_required
+
+  lead:
+    role: Architecture, contracts, data models, and decomposition
+    preferred_domains: [baseline, engineering, knowledge]
+    core_skills:
+      - baseline/ideation
+      - baseline/execution
+      - engineering/software-development/verification-planning
+    on_demand_domains: [agent-systems, operations, creative]
+    destructive_actions: explicit_approval_required
+
+  builder:
+    role: Implementation, refactoring, and integration
+    preferred_domains: [baseline, engineering]
+    core_skills:
+      - baseline/execution
+      - engineering/software-development/surgical-patch
+      - engineering/software-development/verification-planning
+    on_demand_domains: [operations, agent-systems, creative]
+    destructive_actions: explicit_approval_required
+
+  reviewer:
+    role: QA, security review, and verification
+    preferred_domains: [baseline, engineering]
+    core_skills:
+      - antislop
+      - engineering/software-development/verification-planning
+      - engineering/software-development/systematic-debugging
+    on_demand_domains: [operations, knowledge]
+    write_access: read_only_by_default
+    destructive_actions: prohibited
+
+  ops:
+    role: Infrastructure, deployments, monitoring, and incident response
+    preferred_domains: [baseline, operations, engineering]
+    core_skills:
+      - baseline/execution
+      - engineering/software-development/systematic-debugging
+      - operations/server/guardian
+    on_demand_domains: [knowledge, communications]
+    destructive_actions: explicit_approval_required
+
+selection:
+  order:
+    - active_profile_soul
+    - narrowest_matching_skill
+    - profile_core_skills
+    - profile_on_demand_domains
+  limits:
+    max_skills_per_task: 3
+    max_primary_skills: 1
+    max_supporting_skills: 2
+  conflict_resolution:
+    - global_soul_wins
+    - active_profile_soul_wins
+    - more_specific_skill_wins
+    - ask_for_clarification_when_authority_is_unclear
+  approval_gates:
+    - external_communication
+    - public_release
+    - destructive_change
+    - production_change
+    - credential_or_secret_access

@@ -1,3 +1,4 @@
+# Hermes runtime state and secrets
 .env
 auth.json
 auth.lock
@@ -32,9 +33,33 @@ channel_directory.json
 .update_check
 .hermes_history
 shared/
+
+# Local sync helper
+sync.py
+
+# Cross-agent installer outputs and local tool environments
+.agents/
+.claude/
+.tools/
+skills-lock.json
+
+# Generated skill/runtime metadata
 skills/*/__pycache__/
 skills/*/.DS_Store
+skills/.hub/
+skills/.bundled_manifest
+skills/.curator_state
+skills/.usage.json
+skills/.usage.json.lock
+
+# Memory caches
 .memories/*/__pycache__/
+
+# Windows/shell artifacts
+nul
+
+# OS/editor files
 .DS_Store
 Thumbs.db
-sync.py
+.vscode/
+.idea/

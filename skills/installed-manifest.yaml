@@ -1,0 +1,61 @@
+version: 2
+
+# Canonical inventory for Hermes. Runtime discovery uses skills/**/SKILL.md.
+# This manifest is navigation metadata; it does not activate every skill.
+
+policy:
+  default_load: profile_core_only
+  on_demand: true
+  max_skills_per_task: 3
+  never_load_all_domains: true
+  precedence:
+    - ../SOUL.md
+    - ../profiles/<active>/SOUL.md
+    - this_manifest
+    - selected_skill
+
+sources:
+  - id: educlopez/ui-craft
+    installed: true
+    canonical_destination: skills/creative/design/
+  - id: dickwu/apple-design-skill
+    installed: true
+    canonical_destination: skills/creative/design/apple-design
+  - id: Leonxlnx/taste-skill
+    installed: true
+    canonical_destination: skills/creative/design/
+  - id: emilkowalski/skills
+    installed: true
+    canonical_destination: skills/creative/design/
+  - id: JuliusBrussee/caveman
+    installed: true
+    canonical_destination: skills/engineering/software-development/
+  - id: multica-ai/andrej-karpathy-skills
+    installed: true
+    canonical_destination: skills/engineering/software-development/karpathy-guidelines
+  - id: ui-ux-pro-max-cli
+    installed: true
+    canonical_destination: skills/creative/design/ui-ux-pro-max
+  - id: DietrichGebert/ponytail
+    installed: false
+    install_method: Hermes plugin CLI
+    note: Requires hermes executable; not a Python package
+
+canonical_paths:
+  baseline: skills/antislop, skills/baseline/
+  engineering: skills/engineering/
+  agent_systems: skills/agent-systems/
+  creative: skills/creative/design/
+  operations: skills/operations/
+  knowledge: skills/knowledge/
+  productivity: skills/productivity/
+  communications: skills/communications/
+  media: skills/media/
+
+selection_rules:
+  - Read the global and active profile SOUL before selecting skills.
+  - Select one core skill that directly matches the task.
+  - Add only the smallest supporting skill that changes the procedure.
+  - Never load overlapping design bundles together.
+  - Use token-reduction skills only when the task benefits from them.
+  - Stop loading instructions once the procedure is clear.
