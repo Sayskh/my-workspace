@@ -1,0 +1,9 @@
+description: >-
+  DevOps — builds, maintains, and optimizes CI/CD pipelines, container orchestration, Docker images, infrastructure-as-code, and automated zero-downtime deployment workflows.
+skills:
+  required:
+    - artifact-pyramids
+    - docker-management
+  recommended:
+    - site-reliability-engineering
+    - systematic-debugging

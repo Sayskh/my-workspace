@@ -1,0 +1,9 @@
+description: >-
+  Backend Dev — builds resilient server-side architectures, APIs, microservices, data persistence layers, database migrations, and backend business logic.
+skills:
+  required:
+    - artifact-pyramids
+    - systematic-debugging
+  recommended:
+    - architecture
+    - mermaid-diagrams

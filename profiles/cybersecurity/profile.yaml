@@ -1,0 +1,8 @@
+description: >-
+  Cybersecurity — defensive security specialist. Establishes and enforces security policies, conducts threat modeling, audits IAM and secrets management, monitors security telemetry, and manages incident response.
+skills:
+  required:
+    - artifact-pyramids
+    - security-audit-methodology
+  recommended:
+    - site-reliability-engineering

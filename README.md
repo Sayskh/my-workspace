@@ -1,150 +1,168 @@
 # Hermes Agent Workspace
 
-Personal [Hermes Agent](https://github.com/NousResearch/hermes-agent) configuration tuned for multi-agent workflows, homelab infrastructure management, and developer tooling.
+Curated [Hermes Agent](https://github.com/NousResearch/hermes-agent) profiles and shared skills for specialist multi-agent swarms — opinionated, Hermes-native, and artifact-pyramid structured.
 
 ---
 
-## Profiles & Architecture
+## Architecture & Specialist Swarm
 
-Instead of running a single generalist agent, tasks are split across role-specific profiles with isolated personas (`SOUL.md`), memories, and configurations.
+Instead of a single monolithic agent, tasks are routed to 16 specialized roles organized into two coordinated teams: **IT Core** and **Finance**. Global safety rules, ethics, and base identity are defined in `SOUL.md` (Umi, Chief of Staff & Gateway), while each profile adds a focused mission, authority boundary, and skill dependencies.
 
 ```text
-                  [ User / Telegram ]
-                           │
-                           ▼
-                  default (Umi / Lead)
-                           │
-        ┌──────────┬───────┴──────┬──────────┬──────────┐
-        ▼          ▼              ▼          ▼          ▼
-     planner      lead         builder    reviewer     ops
-      (PRD)    (Arch/API)       (Code)    (Security)  (Infra)
+                                [ User / Client ]
+                                        │
+                                        ▼
+                                 SOUL.md (Umi)
+                            Chief of Staff & Gateway
+                                        │
+                    ┌───────────────────┴───────────────────┐
+                    ▼                                       ▼
+             IT Core Team (12)                       Finance Team (4)
+      ┌─────────────────────────────┐         ┌─────────────────────────────┐
+      │ cto                         │         │ cfo                         │
+      │ project-manager             │         │ finance-manager             │
+      │ backend-dev / fullstack-dev │         │ accounting-manager          │
+      │ frontend-dev                │         │ financial-analyst (FinOps)  │
+      │ ui-ux-designer              │         └─────────────────────────────┘
+      │ qa-engineer                 │
+      │ pentester                   │
+      │ devops                      │
+      │ cybersecurity               │
+      │ sysadmin                    │
+      │ repo-manager                │
+      └─────────────────────────────┘
 ```
 
-| Profile | Focus |
-|---|---|
-| `default` | Orchestration, triage, and Telegram gateway entry point |
-| `planner` | Specs, user stories, requirements, and edge-case discovery |
-| `lead` | System design, database schemas, and API contracts |
-| `builder` | Implementation, refactoring, and integration code |
-| `reviewer` | Static analysis, test coverage verification, and code audits |
-| `ops` | Linux/Docker management, service health checks, and homelab triage |
+Detailed lifecycle pipelines, authority matrices, and cross-team interactions are documented in **[PROFILES.md](file:///d:/aqil/code/hermes-agent/PROFILES.md)**.
 
 ---
 
-## Model Recommendations
+## Profiles Roster
 
-### Cloud Models
+### IT Core Team (12 Profiles)
 
-| Profile | Primary Pick | Alternative | Notes |
-|---|---|---|---|
-| `default` | `claude-fable-5.1` | `gpt-5.6-terra` | Long-context router, cost-efficient cached turns |
-| `planner` | `claude-opus-5` | `qwen-3.8-max` | High reasoning depth for long specifications |
-| `lead` | `claude-fable-5.1 (thinking)` | `deepseek-v4-pro (think-max)` | Strict design decisions and contract validation |
-| `builder` | `claude-fable-5.1` | `gpt-5.6-sol` | Long-horizon coding and self-verification |
-| `reviewer` | `deepseek-v4-pro (think-max)` | `claude-opus-5` | Thorough security auditing and edge-case scanning |
-| `ops` | `qwen-3.8-max` | `deepseek-v4-flash` | Fast log inspection, command execution |
-
-### Local Models (Ollama)
-
-| Hardware Tier | General & Routing | Coding | Reasoning |
-|---|---|---|---|
-| 8–12 GB VRAM | `qwen3.5:9b` | `gemma4:8b` | `qwen3.5:9b` |
-| 16–24 GB VRAM | `qwen3.8:27b` | `devstral-small-2:24b` | `gemma4:27b` |
-| 32+ GB VRAM | `qwen3-coder-next` | `qwen3-coder-next` | `deepseek-v4-pro` (quantized) |
-
----
-
-## Configured MCP Servers
-
-Active integrations configured in `config.yaml` (`hermes mcp list`):
-
-| Server | Category | Purpose |
+| Profile | Focus & Mission | Core Skills |
 |---|---|---|
-| `n8n` | Automation | Run local and remote automation webhooks |
-| `cloudflare` | Infra | DNS records and Cloudflare tunnel ingress |
-| `grafana` | Monitoring | Query Prometheus metrics and container stats |
-| `supabase` | Database | Postgres queries, migrations, and auth policies |
-| `context7` | Dev | Library docs lookup and current API specs |
-| `deepwiki` | Dev | GitHub repository semantic search |
-| `semgrep` | Security | SAST scanning and rule checking |
-| `sentry` | Diagnostics | Inspect live exceptions and error stack traces |
-| `postman` | API | Run API collections and schema tests |
-| `hugging_face` | ML | Model search, dataset discovery, and inference APIs |
-| `linear` | Tracking | Issue board updates and tracking |
-| `notion` | Notes | Search and sync documentation |
-| `todoist` | Tasks | Task creation and priority sync |
-| `wolfram` | Math | Analytical computing and scientific calculations |
+| [`cto`](file:///d:/aqil/code/hermes-agent/profiles/cto/) | Technology strategy, architecture governance, build-vs-buy TCO | `artifact-pyramids`, `executive-methodology`, `technology-radar` |
+| [`project-manager`](file:///d:/aqil/code/hermes-agent/profiles/project-manager/) | Work breakdown (WBS), sprint planning, critical path analysis | `artifact-pyramids`, `implementation-planning` |
+| [`backend-dev`](file:///d:/aqil/code/hermes-agent/profiles/backend-dev/) | Server-side services, database persistence, API contracts | `artifact-pyramids`, `systematic-debugging`, `architecture` |
+| [`fullstack-dev`](file:///d:/aqil/code/hermes-agent/profiles/fullstack-dev/) | Vertical feature slices end-to-end (UI + API + DB) | `artifact-pyramids`, `systematic-debugging`, `ux-methodology` |
+| [`frontend-dev`](file:///d:/aqil/code/hermes-agent/profiles/frontend-dev/) | Client interfaces, responsive design, WCAG accessibility, state | `artifact-pyramids`, `ux-methodology` |
+| [`ui-ux-designer`](file:///d:/aqil/code/hermes-agent/profiles/ui-ux-designer/) | User journeys, design systems, visual tokens, wireframes | `artifact-pyramids`, `ux-methodology`, `mermaid-diagrams` |
+| [`qa-engineer`](file:///d:/aqil/code/hermes-agent/profiles/qa-engineer/) | Automated test suites, edge case fuzzing, quality gatekeeping | `artifact-pyramids`, `qa-methodology` |
+| [`pentester`](file:///d:/aqil/code/hermes-agent/profiles/pentester/) | Offensive security assessments, CVSS exploit verification | `artifact-pyramids`, `security-audit-methodology` |
+| [`devops`](file:///d:/aqil/code/hermes-agent/profiles/devops/) | CI/CD pipelines, container orchestration, Docker, zero-downtime | `artifact-pyramids`, `docker-management`, `site-reliability-engineering` |
+| [`cybersecurity`](file:///d:/aqil/code/hermes-agent/profiles/cybersecurity/) | Defensive zero-trust architecture, IAM, secret hygiene, incident response | `artifact-pyramids`, `security-audit-methodology` |
+| [`sysadmin`](file:///d:/aqil/code/hermes-agent/profiles/sysadmin/) | Server operating systems, networking, storage arrays, observability | `artifact-pyramids`, `site-reliability-engineering` |
+| [`repo-manager`](file:///d:/aqil/code/hermes-agent/profiles/repo-manager/) | Git hygiene, branch protection, SemVer, automated changelogs | `artifact-pyramids`, `technical-documentation` |
+
+### Finance Team (4 Profiles)
+
+| Profile | Focus & Mission | Core Skills |
+|---|---|---|
+| [`cfo`](file:///d:/aqil/code/hermes-agent/profiles/cfo/) | Financial strategy, capital allocation, cash runway, economic modeling | `artifact-pyramids`, `financial-modeling`, `executive-methodology` |
+| [`finance-manager`](file:///d:/aqil/code/hermes-agent/profiles/finance-manager/) | Budget tracking, operational disbursements, vendor contracts, cash flow | `artifact-pyramids`, `financial-modeling`, `startup-analysis` |
+| [`accounting-manager`](file:///d:/aqil/code/hermes-agent/profiles/accounting-manager/) | General ledger, double-entry bookkeeping, GAAP, tax compliance | `artifact-pyramids`, `financial-modeling`, `technical-documentation` |
+| [`financial-analyst`](file:///d:/aqil/code/hermes-agent/profiles/financial-analyst/) | FinOps cloud cost optimization, SaaS metrics, cohort retention | `artifact-pyramids`, `financial-modeling`, `saas-valuation-compression`, `yfinance-data` |
 
 ---
 
-## Server & Homelab Skills (`skills/server/`)
+## Standard Profile Specification
 
-Operational guides and playbooks loaded into the agent:
+Every profile adheres to the strict 4-document specification:
 
-- **Incident response**: 5-step runbook execution (*Pre-flight → Plan → Execute → Verify → Rollback*)
-- **Containers**: Docker Swarm, private registries, GPU pass-through, compose stacks
-- **Hypervisors & OS**: Proxmox VE 8, LXC containers, Debian 12, NixOS
-- **Networking & Storage**: RouterOS, UniFi, TrueNAS SCALE, Synology DSM
+```text
+profiles/<role>/
+├── SOUL.md       # Identity, First Principles, Decision Heuristics, Artifact Pyramid Output Contract
+├── profile.yaml  # Machine-readable description, required skills, and recommended skills
+├── AGENTS.md     # Agent Guidance: Trigger Patterns ("User says X -> Means Y"), loading order, handoff
+└── README.md     # Human-facing profile documentation and quickstart
+```
+
+---
+
+## Skills Architecture
+
+Skills are organized into modular domain directories under `skills/`:
+
+```text
+skills/
+├── baseline/       # antislop, ideation, artifact-pyramids
+├── engineering/    # architecture (ADRs, C4, Arc42), technology-radar, systematic-debugging,
+│                   # qa-methodology, security-audit-methodology, implementation-planning,
+│                   # technical-documentation, executive-methodology
+├── finance/        # financial-modeling, startup-analysis, saas-valuation-compression,
+│                   # yfinance-data, stock-liquidity
+├── operations/     # docker-management, site-reliability-engineering, server, web
+├── creative/       # ux-methodology, mermaid-diagrams, design
+├── knowledge/      # research, citations, note-taking
+├── productivity/   # task management, documents
+├── communications/ # email, social media
+└── media/          # audio, video processing
+```
+
+### The Output Contract: Artifact Pyramids
+
+Profiles avoid flooding the chat context with thousands of unstructured lines. Instead, complex deliverables follow the **Artifact Pyramid** convention:
+
+```text
+<engagement-output>/
+├── 00-index.md          ← Navigation index, metadata, SOURCES
+├── 01-summary/          ← L1: Executive summary, primary recommendations, ADRs
+├── 02-analysis/         ← L2: In-depth trade-off evaluations, models, matrices
+└── 03-dossiers/         ← L3: Raw logs, workbooks, test scripts, diffs
+```
+The caller receives the absolute path to `00-index.md` as the handoff pointer.
 
 ---
 
 ## How to Run
 
-### Switching Profiles
+### Default Gateway (Umi)
 ```bash
-# Default profile (orchestration)
 hermes
-
-# Specialist profile
-hermes -p builder
-hermes -p reviewer
-hermes -p ops
 ```
 
-### Telegram Gateway
+### Specialist Profiles
 ```bash
-hermes gateway start
-hermes gateway status
-```
+# IT Core
+hermes --profile cto
+hermes --profile project-manager
+hermes --profile backend-dev
+hermes --profile fullstack-dev
+hermes --profile frontend-dev
+hermes --profile ui-ux-designer
+hermes --profile qa-engineer
+hermes --profile pentester
+hermes --profile devops
+hermes --profile cybersecurity
+hermes --profile sysadmin
+hermes --profile repo-manager
 
-### Docker Deployment (Server / VPS)
-```bash
-cp .env.example .env
-docker compose -f docker-compose.server.yml up -d
+# Finance
+hermes --profile cfo
+hermes --profile finance-manager
+hermes --profile accounting-manager
+hermes --profile financial-analyst
 ```
-
-### Workspace Sync (Local Windows Setup)
-If editing profiles or skills in this repository while Hermes runs from `%LOCALAPPDATA%\hermes`:
-```bash
-python sync.py push   # Repo -> AppData
-python sync.py pull   # AppData -> Repo
-python sync.py all    # Bidirectional sync
-```
-*(Note: `sync.py` is ignored in Git to prevent local environment leaks).*
 
 ---
 
-## Repository Structure
+## Validation
 
-```text
-hermes-agent/
-├── config.yaml                 # Active Hermes config and MCP definitions
-├── SOUL.md                    # Default persona and global safety rules
-├── profiles/                  # Role-specific personas and configs
-│   ├── planner/
-│   ├── lead/
-│   ├── builder/
-│   ├── reviewer/
-│   └── ops/
-├── skills/                   # Skill definitions and organization docs
-│   ├── README.md              # Skill groups and loading rules
-│   ├── skill-catalog.yaml     # Human-maintained profile/skill index
-│   ├── server/                # Homelab and infrastructure
-│   ├── devops/                # Delivery and review workflows
-│   └── software-development/ # Coding, debugging, and testing
-├── memories/                 # Local memory state
-└── docker-compose.server.yml # Optional containerized deployment
+Verify that all profiles, YAML metadata, and skill references comply with standards:
+
+```bash
+python scripts/validate_profiles.py
 ```
 
-Local runtime files such as `.env`, `sync.py`, caches, logs, and state databases
-are intentionally ignored by Git and are not part of the repository contract.
+Expected output:
+```text
+Profile validation passed: 16 profiles, 247 shared skills.
+```
+
+---
+
+## License
+
+MIT

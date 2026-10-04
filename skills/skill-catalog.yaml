@@ -9,25 +9,47 @@ domains:
     directories:
       - antislop
       - baseline
+      - baseline/artifact-pyramids
 
   engineering:
-    description: Software implementation, debugging, review, delivery, and agent tooling
+    description: Software implementation, debugging, review, delivery, architecture, and agent tooling
     directories:
       - engineering/software-development
       - engineering/devops
       - agent-systems
+      - engineering/architecture
+      - engineering/technology-radar
+      - engineering/systematic-debugging
+      - engineering/qa-methodology
+      - engineering/security-audit-methodology
+      - engineering/implementation-planning
+      - engineering/executive-methodology
+      - engineering/technical-documentation
 
   creative:
-    description: UI/UX, visual design, motion, branding, and media creation
+    description: UI/UX, visual design, motion, branding, diagrams, and media creation
     directories:
       - creative/design
       - media
+      - creative/ux-methodology
+      - creative/mermaid-diagrams
 
   operations:
-    description: Infrastructure, servers, networking, and web operations
+    description: Infrastructure, servers, networking, containers, and site reliability
     directories:
       - operations/server
       - operations/web
+      - operations/docker-management
+      - operations/site-reliability-engineering
+
+  finance:
+    description: Financial strategy, budgeting, accounting, SaaS metrics, and FinOps
+    directories:
+      - finance/financial-modeling
+      - finance/startup-analysis
+      - finance/saas-valuation-compression
+      - finance/yfinance-data
+      - finance/stock-liquidity
 
   knowledge:
     description: Research, citations, notes, and knowledge capture
@@ -60,58 +82,159 @@ profiles:
       - antislop
       - baseline/ideation
       - baseline/execution
-    on_demand_domains: [agent-systems, creative, operations, communications]
+      - artifact-pyramids
+    on_demand_domains: [agent-systems, creative, operations, communications, finance]
     destructive_actions: explicit_approval_required
 
-  planner:
-    role: Requirements, user stories, scope, and acceptance criteria
-    preferred_domains: [baseline, knowledge, productivity]
+  # --- IT Core Team (12 Profiles) ---
+
+  cto:
+    role: Chief Technology Officer — technology strategy and architecture governance
+    preferred_domains: [baseline, engineering, operations]
     core_skills:
-      - baseline/ideation
-      - baseline/execution
-      - knowledge/research/grounded-citations
-    on_demand_domains: [engineering, creative]
+      - artifact-pyramids
+      - executive-methodology
+      - technology-radar
+    on_demand_domains: [operations, finance, knowledge]
     destructive_actions: explicit_approval_required
 
-  lead:
-    role: Architecture, contracts, data models, and decomposition
-    preferred_domains: [baseline, engineering, knowledge]
+  project-manager:
+    role: Project Manager — delivery coordination, work breakdown, and critical path
+    preferred_domains: [baseline, engineering, productivity]
     core_skills:
-      - baseline/ideation
-      - baseline/execution
-      - engineering/software-development/verification-planning
-    on_demand_domains: [agent-systems, operations, creative]
+      - artifact-pyramids
+      - implementation-planning
+    on_demand_domains: [creative, knowledge, finance]
     destructive_actions: explicit_approval_required
 
-  builder:
-    role: Implementation, refactoring, and integration
+  backend-dev:
+    role: Backend Dev — server-side logic, database persistence, and API contracts
     preferred_domains: [baseline, engineering]
     core_skills:
-      - baseline/execution
-      - engineering/software-development/surgical-patch
-      - engineering/software-development/verification-planning
-    on_demand_domains: [operations, agent-systems, creative]
+      - artifact-pyramids
+      - systematic-debugging
+    on_demand_domains: [operations, agent-systems]
     destructive_actions: explicit_approval_required
 
-  reviewer:
-    role: QA, security review, and verification
+  fullstack-dev:
+    role: Fullstack Dev — end-to-end vertical features across frontend and backend
+    preferred_domains: [baseline, engineering, creative]
+    core_skills:
+      - artifact-pyramids
+      - systematic-debugging
+    on_demand_domains: [operations, agent-systems]
+    destructive_actions: explicit_approval_required
+
+  frontend-dev:
+    role: Frontend Dev — client-side interfaces, responsive styling, accessibility, and state
+    preferred_domains: [baseline, creative, engineering]
+    core_skills:
+      - artifact-pyramids
+      - ux-methodology
+    on_demand_domains: [media]
+    destructive_actions: explicit_approval_required
+
+  ui-ux-designer:
+    role: UI/UX Designer — user journeys, design systems, visual tokens, and wireframes
+    preferred_domains: [baseline, creative]
+    core_skills:
+      - artifact-pyramids
+      - ux-methodology
+    on_demand_domains: [media, productivity]
+    destructive_actions: prohibited
+
+  qa-engineer:
+    role: QA Engineer — functional test verification, automated test suites, quality gatekeeper
     preferred_domains: [baseline, engineering]
     core_skills:
-      - antislop
-      - engineering/software-development/verification-planning
-      - engineering/software-development/systematic-debugging
+      - artifact-pyramids
+      - qa-methodology
     on_demand_domains: [operations, knowledge]
     write_access: read_only_by_default
     destructive_actions: prohibited
 
-  ops:
-    role: Infrastructure, deployments, monitoring, and incident response
+  pentester:
+    role: Pentester — offensive security testing, exploit verification, and vulnerability analysis
+    preferred_domains: [baseline, engineering, operations]
+    core_skills:
+      - artifact-pyramids
+      - security-audit-methodology
+    on_demand_domains: [knowledge]
+    destructive_actions: explicit_approval_required
+
+  devops:
+    role: DevOps — CI/CD pipelines, container orchestration, Docker, and IaC deployment
     preferred_domains: [baseline, operations, engineering]
     core_skills:
-      - baseline/execution
-      - engineering/software-development/systematic-debugging
-      - operations/server/guardian
-    on_demand_domains: [knowledge, communications]
+      - artifact-pyramids
+      - docker-management
+    on_demand_domains: [finance, knowledge]
+    destructive_actions: explicit_approval_required
+
+  cybersecurity:
+    role: Cybersecurity Specialist — defensive posture, IAM, secrets hygiene, compliance, and incident response
+    preferred_domains: [baseline, engineering, operations]
+    core_skills:
+      - artifact-pyramids
+      - security-audit-methodology
+    on_demand_domains: [knowledge]
+    destructive_actions: explicit_approval_required
+
+  sysadmin:
+    role: SysAdmin — server operations, OS hardening, networking, storage, and host observability
+    preferred_domains: [baseline, operations]
+    core_skills:
+      - artifact-pyramids
+      - site-reliability-engineering
+    on_demand_domains: [engineering, knowledge]
+    destructive_actions: explicit_approval_required
+
+  repo-manager:
+    role: Repo Manager — Git governance, branching, versioning, release notes, and merge criteria
+    preferred_domains: [baseline, engineering, productivity]
+    core_skills:
+      - artifact-pyramids
+      - technical-documentation
+    on_demand_domains: [operations]
+    destructive_actions: explicit_approval_required
+
+  # --- Finance Team (4 Profiles) ---
+
+  cfo:
+    role: Chief Financial Officer — financial strategy, capital discipline, runway, and financial modeling
+    preferred_domains: [baseline, finance, engineering]
+    core_skills:
+      - artifact-pyramids
+      - financial-modeling
+      - executive-methodology
+    on_demand_domains: [productivity, knowledge]
+    destructive_actions: explicit_approval_required
+
+  finance-manager:
+    role: Finance Manager — operational cash execution, budget variance, invoice processing, and renewals
+    preferred_domains: [baseline, finance, productivity]
+    core_skills:
+      - artifact-pyramids
+      - financial-modeling
+    on_demand_domains: [communications]
+    destructive_actions: explicit_approval_required
+
+  accounting-manager:
+    role: Accounting Manager — general ledger integrity, double-entry bookkeeping, GAAP, and tax compliance
+    preferred_domains: [baseline, finance, productivity]
+    core_skills:
+      - artifact-pyramids
+      - financial-modeling
+    on_demand_domains: [engineering]
+    destructive_actions: explicit_approval_required
+
+  financial-analyst:
+    role: Financial Analyst — FinOps cloud cost optimization, SaaS metrics, and quantitative forecasting
+    preferred_domains: [baseline, finance, engineering]
+    core_skills:
+      - artifact-pyramids
+      - financial-modeling
+    on_demand_domains: [operations, productivity]
     destructive_actions: explicit_approval_required
 
 selection:

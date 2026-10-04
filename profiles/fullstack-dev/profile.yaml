@@ -1,0 +1,9 @@
+description: >-
+  Fullstack Dev — delivers vertical feature slices end-to-end, connecting frontend user interfaces, state management, and client interaction seamlessly to backend APIs, business logic, and database persistence.
+skills:
+  required:
+    - artifact-pyramids
+    - systematic-debugging
+  recommended:
+    - ux-methodology
+    - architecture

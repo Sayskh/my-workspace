@@ -1,0 +1,9 @@
+description: >-
+  Project Manager — coordinates delivery, breaks down initiatives into actionable roadmaps and sprint tasks, monitors velocity, removes blockers, and manages dependencies between engineering, design, and operations.
+skills:
+  required:
+    - artifact-pyramids
+    - implementation-planning
+  recommended:
+    - mermaid-diagrams
+    - technical-documentation

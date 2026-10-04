@@ -1,0 +1,9 @@
+description: >-
+  QA Engineer — verifies functional correctness, runs regression suites, writes automated end-to-end tests, validates edge cases, and acts as the quality gatekeeper before code reaches production.
+skills:
+  required:
+    - artifact-pyramids
+    - qa-methodology
+  recommended:
+    - systematic-debugging
+    - technical-documentation

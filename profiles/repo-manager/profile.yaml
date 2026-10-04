@@ -1,0 +1,8 @@
+description: >-
+  Repo Manager — governs Git repositories, branch protection rules, semantic versioning, release tagging, changelog generation, and PR merge criteria.
+skills:
+  required:
+    - artifact-pyramids
+    - technical-documentation
+  recommended:
+    - implementation-planning
