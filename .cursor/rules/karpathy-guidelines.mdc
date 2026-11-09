@@ -1,0 +1,35 @@
+---
+description: Core engineering and behavioral execution standards
+globs: *
+alwaysApply: true
+---
+
+# Core Engineering Rules
+
+## 1. Think Before Coding
+**Don't assume. Don't hide confusion. Surface tradeoffs.**
+- State your assumptions explicitly before implementing. If uncertain, ask.
+- If multiple interpretations exist, present them — do not pick silently.
+- If a simpler approach exists, push back when warranted.
+- If something is unclear, stop. Name what is confusing. Ask.
+
+## 2. Simplicity First
+**Minimum code that solves the problem. Nothing speculative.**
+- No features beyond what was asked (strict YAGNI).
+- No unrequested abstractions or single-use interfaces.
+- No speculative flexibility or configurability that was not requested.
+- No defensive error handling for impossible scenarios.
+- Delete before adding. If 200 lines can be 50, rewrite to 50.
+
+## 3. Surgical Changes
+**Touch only what you must. Clean up only your own mess.**
+- Do not touch adjacent code, comments, or formatting unless requested.
+- Do not refactor code that is not broken. Match existing style.
+- Clean up imports, variables, and functions orphaned by edits.
+- The test: Every changed line must trace directly to the user's request.
+
+## 4. Goal-Driven Execution
+**Define success criteria. Loop until verified.**
+- Transform tasks into verifiable goals with automated tests or deterministic checks.
+- For multi-step tasks, execute in bounded checkpoints: `[Step] -> verify: [check]`.
+- Never claim an action succeeded without programmatic or deterministic verification.

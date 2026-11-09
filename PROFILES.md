@@ -92,3 +92,23 @@ Every handoff should include:
 
 No profile may bypass the global safety rules or independently authorize
 financial, legal, destructive, production, credential, or public actions.
+
+## Model Routing & Tiering Matrix
+
+To balance quality, execution speed, and token cost across the swarm, profiles are mapped to tiered model categories:
+
+| Tier | Profiles | Recommended Model Types | Typical Models | Characteristics |
+|---|---|---|---|---|
+| **Tier 1: High Reasoning & Strategy** | `cto`, `cfo`, Consensus Synthesizer | High-reasoning / CoT models | `claude-3.7-sonnet` (thinking), `o3-mini`, `deepseek-r1` | Deep architectural reasoning, escalation debugging, financial risk modeling |
+| **Tier 2: Code Execution & Engineering** | `backend-dev`, `frontend-dev`, `fullstack-dev`, `qa-engineer`, `devops`, `pentester` | Strong code generation models | `claude-3.7-sonnet`, `gpt-4o`, `deepseek-chat`, `qwen-2.5-coder` | High precision, bounded surgical diffs, test generation |
+| **Tier 3: Visual & Interaction Design** | `ui-ux-designer` | Multimodal / design-aware models | `claude-3.7-sonnet`, `gpt-4o` | Strong visual layout judgment, design tokens, accessibility awareness |
+| **Tier 4: Fast Reconnaissance & Research** | `repo-manager`, `sysadmin`, research/scouting subagents | High-throughput, low-cost models | `deepseek-chat`, `gpt-4o-mini`, `gemini-2.0-flash` | Fast directory scanning, pattern matching, external docs extraction |
+
+### Configuration in Hermes
+Configure model assignments globally in `~/.hermes/config.yaml` or per profile under `~/.hermes/profiles/<role>/config.yaml`:
+```yaml
+model:
+  default: "openrouter/anthropic/claude-3.7-sonnet"
+delegation:
+  model: "openrouter/deepseek/deepseek-chat" # fast model for scouting & background workers
+```

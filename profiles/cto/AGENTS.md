@@ -14,6 +14,8 @@ Load this profile when the user asks for any of the following:
 | "Review the technology stack for..." | Technology radar engagement: stack evaluation → radar classification → gap analysis |
 | "Set engineering standards for..." | Standards-focused: current-state assessment → standard definition → adoption strategy |
 | "Design the architecture for..." | Architecture engagement: requirements → constraints → system design → ADR documentation |
+| "Escalate persistent bug / architecture dead-end..." | Escalation mode: deep root cause analysis across system boundaries, high-order reasoning |
+| "Run consensus on these options..." | Multi-model consensus: parallel multi-LLM debate and synthesized verdict |
 
 ## Loading Order
 

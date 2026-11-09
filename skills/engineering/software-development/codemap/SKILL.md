@@ -39,8 +39,10 @@ If neither file exists: Continue to Step 2 (Initialize).
    - Respect `.gitignore` automatically
 3. **Run codemap.mjs init**:
 
+Locate `codemap.mjs` within the skill scripts directory (e.g. `skills/engineering/software-development/codemap/scripts/codemap.mjs` or `$HERMES_HOME/skills/engineering/software-development/codemap/scripts/codemap.mjs`):
+
 ```bash
-node ~/.config/opencode/skills/codemap/scripts/codemap.mjs init \
+node <path-to-skill>/scripts/codemap.mjs init \
   --root ./ \
   --include "src/**/*.ts" \
   --exclude "**/*.test.ts" --exclude "dist/**" --exclude "node_modules/**"
@@ -50,14 +52,14 @@ This creates:
 - `.slim/codemap.json` - File and folder hashes for change detection
 - Empty `codemap.md` files in all relevant subdirectories
 
-4. **Delegate codemap writing to Fixer agents** - Spawn one fixer per folder to read code and create or update its specific `codemap.md` file.
+4. **Delegate codemap writing to developer subagents** - Spawn one subagent per folder (`delegate_task(goal="Update codemap for <folder>", background=True)`) to read code and create or update its specific `codemap.md` file.
 
 ### Step 3: Detect Changes (If state already exists)
 
 1. **Run codemap.mjs changes** to see what changed:
 
 ```bash
-node ~/.config/opencode/skills/codemap/scripts/codemap.mjs changes \
+node <path-to-skill>/scripts/codemap.mjs changes \
   --root ./
 ```
 
@@ -67,11 +69,11 @@ node ~/.config/opencode/skills/codemap/scripts/codemap.mjs changes \
    - Modified files
    - Affected folders
 
-3. **Only update affected codemaps** - Spawn one fixer per affected folder to update its `codemap.md`.
+3. **Only update affected codemaps** - Spawn one developer subagent per affected folder to update its `codemap.md`.
 4. **Run update** to save new state:
 
 ```bash
-node ~/.config/opencode/skills/codemap/scripts/codemap.mjs update \
+node <path-to-skill>/scripts/codemap.mjs update \
   --root ./
 ```
 
@@ -108,7 +110,7 @@ This is idempotent - repeated codemap runs will detect the existing section and 
 
 ## Codemap Content
 
-Fixers are responsible for writing `codemap.md` files during this workflow. Use precise technical terminology to document the implementation:
+Developer subagents are responsible for writing `codemap.md` files during this workflow. Use precise technical terminology to document the implementation:
 
 - **Responsibility** - Define the specific role of this directory using standard software engineering terms (e.g., "Service Layer", "Data Access Object", "Middleware").
 - **Design Patterns** - Identify and name specific patterns used (e.g., "Observer", "Singleton", "Factory", "Strategy"). Detail the abstractions and interfaces.

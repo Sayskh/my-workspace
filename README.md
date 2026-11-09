@@ -1,19 +1,24 @@
-# Hermes Agent Workspace
+# Umi Harness
 
-Curated [Hermes Agent](https://github.com/NousResearch/hermes-agent) profiles and shared skills for specialist multi-agent swarms — opinionated, Hermes-native, and artifact-pyramid structured.
+Cross-platform multi-agent orchestration harness, 16 specialist profiles, and 373 capability skills.
+
+Umi serves as the primary gateway and Chief of Staff. Umi analyzes requests, decomposes workflows, and delegates domain-specific execution to specialized subagents across IT Core and Finance teams.
+
+Compatible out-of-the-box with **Hermes Agent**, **OpenCode**, **Claude Code**, **Antigravity**, **Cursor IDE**, and standard **LLM APIs** (OpenAI / Anthropic / xAI).
 
 ---
 
-## Architecture & Specialist Swarm
+## Architecture & Swarm Topology
 
-Instead of a single monolithic agent, tasks are routed to 16 specialized roles organized into two coordinated teams: **IT Core** and **Finance**. Global safety rules, ethics, and base identity are defined in `SOUL.md` (Umi, Chief of Staff & Gateway), while each profile adds a focused mission, authority boundary, and skill dependencies.
+Umi delegates domain implementation directly to specialist subagents. Gateway rules prevent direct domain execution when a specialized profile exists.
 
 ```text
-                                [ User / Client ]
+                                [ User Request ]
                                         │
                                         ▼
-                                 SOUL.md (Umi)
-                            Chief of Staff & Gateway
+                                  Umi (Gateway)
+                      Chief of Staff & Primary Orchestrator
+                     (SOUL.md / AGENTS.md / SYSTEM_PROMPT.md)
                                         │
                     ┌───────────────────┴───────────────────┐
                     ▼                                       ▼
@@ -33,7 +38,7 @@ Instead of a single monolithic agent, tasks are routed to 16 specialized roles o
       └─────────────────────────────┘
 ```
 
-Detailed lifecycle pipelines, authority matrices, and cross-team interactions are documented in **[PROFILES.md](file:///d:/aqil/code/hermes-agent/PROFILES.md)**.
+Detailed lifecycle pipelines, authority matrices, and cross-team interactions are documented in **[PROFILES.md](PROFILES.md)**.
 
 ---
 
@@ -41,116 +46,135 @@ Detailed lifecycle pipelines, authority matrices, and cross-team interactions ar
 
 ### IT Core Team (12 Profiles)
 
-| Profile | Focus & Mission | Core Skills |
+| Profile | Focus & Domain | Core Skills |
 |---|---|---|
-| [`cto`](file:///d:/aqil/code/hermes-agent/profiles/cto/) | Technology strategy, architecture governance, build-vs-buy TCO | `artifact-pyramids`, `executive-methodology`, `technology-radar` |
-| [`project-manager`](file:///d:/aqil/code/hermes-agent/profiles/project-manager/) | Work breakdown (WBS), sprint planning, critical path analysis | `artifact-pyramids`, `implementation-planning` |
-| [`backend-dev`](file:///d:/aqil/code/hermes-agent/profiles/backend-dev/) | Server-side services, database persistence, API contracts | `artifact-pyramids`, `systematic-debugging`, `architecture` |
-| [`fullstack-dev`](file:///d:/aqil/code/hermes-agent/profiles/fullstack-dev/) | Vertical feature slices end-to-end (UI + API + DB) | `artifact-pyramids`, `systematic-debugging`, `ux-methodology` |
-| [`frontend-dev`](file:///d:/aqil/code/hermes-agent/profiles/frontend-dev/) | Client interfaces, responsive design, WCAG accessibility, state | `artifact-pyramids`, `ux-methodology` |
-| [`ui-ux-designer`](file:///d:/aqil/code/hermes-agent/profiles/ui-ux-designer/) | User journeys, design systems, visual tokens, wireframes | `artifact-pyramids`, `ux-methodology`, `mermaid-diagrams` |
-| [`qa-engineer`](file:///d:/aqil/code/hermes-agent/profiles/qa-engineer/) | Automated test suites, edge case fuzzing, quality gatekeeping | `artifact-pyramids`, `qa-methodology` |
-| [`pentester`](file:///d:/aqil/code/hermes-agent/profiles/pentester/) | Offensive security assessments, CVSS exploit verification | `artifact-pyramids`, `security-audit-methodology` |
-| [`devops`](file:///d:/aqil/code/hermes-agent/profiles/devops/) | CI/CD pipelines, container orchestration, Docker, zero-downtime | `artifact-pyramids`, `docker-management`, `site-reliability-engineering` |
-| [`cybersecurity`](file:///d:/aqil/code/hermes-agent/profiles/cybersecurity/) | Defensive zero-trust architecture, IAM, secret hygiene, incident response | `artifact-pyramids`, `security-audit-methodology` |
-| [`sysadmin`](file:///d:/aqil/code/hermes-agent/profiles/sysadmin/) | Server operating systems, networking, storage arrays, observability | `artifact-pyramids`, `site-reliability-engineering` |
-| [`repo-manager`](file:///d:/aqil/code/hermes-agent/profiles/repo-manager/) | Git hygiene, branch protection, SemVer, automated changelogs | `artifact-pyramids`, `technical-documentation` |
+| [`cto`](profiles/cto/) | Architecture governance, technology strategy, RFCs, build-vs-buy TCO | `artifact-pyramids`, `executive-methodology`, `technology-radar` |
+| [`project-manager`](profiles/project-manager/) | Work breakdown structures (WBS), sprint planning, milestone tracking | `artifact-pyramids`, `implementation-planning` |
+| [`backend-dev`](profiles/backend-dev/) | Server APIs, database persistence, schema migrations, query plans | `artifact-pyramids`, `systematic-debugging`, `nodejs-backend-patterns` |
+| [`fullstack-dev`](profiles/fullstack-dev/) | End-to-end vertical feature slices (UI + API + DB integration) | `artifact-pyramids`, `systematic-debugging`, `ux-methodology` |
+| [`frontend-dev`](profiles/frontend-dev/) | Client interfaces, responsive design, WCAG accessibility, state | `artifact-pyramids`, `ux-methodology`, `react-best-practices` |
+| [`ui-ux-designer`](profiles/ui-ux-designer/) | UX journeys, design systems, visual tokens, wireframes, UI styling | `artifact-pyramids`, `ux-methodology`, `mermaid-diagrams` |
+| [`qa-engineer`](profiles/qa-engineer/) | Automated test suites, edge case verification, quality gatekeeping | `artifact-pyramids`, `qa-methodology`, `javascript-testing-patterns` |
+| [`pentester`](profiles/pentester/) | Offensive security assessments, CVSS exploit verification | `artifact-pyramids`, `security-audit-methodology` |
+| [`devops`](profiles/devops/) | CI/CD pipelines, container orchestration, Docker, zero-downtime | `artifact-pyramids`, `docker-management`, `site-reliability-engineering` |
+| [`cybersecurity`](profiles/cybersecurity/) | Defensive zero-trust architecture, IAM, secrets hygiene, incident triage | `artifact-pyramids`, `security-audit-methodology` |
+| [`sysadmin`](profiles/sysadmin/) | Linux OS, homelab infrastructure, networking, storage arrays, observability | `artifact-pyramids`, `site-reliability-engineering` |
+| [`repo-manager`](profiles/repo-manager/) | Git hygiene, branch protection, SemVer, changelogs, release tagging | `artifact-pyramids`, `technical-documentation` |
 
 ### Finance Team (4 Profiles)
 
-| Profile | Focus & Mission | Core Skills |
+| Profile | Focus & Domain | Core Skills |
 |---|---|---|
-| [`cfo`](file:///d:/aqil/code/hermes-agent/profiles/cfo/) | Financial strategy, capital allocation, cash runway, economic modeling | `artifact-pyramids`, `financial-modeling`, `executive-methodology` |
-| [`finance-manager`](file:///d:/aqil/code/hermes-agent/profiles/finance-manager/) | Budget tracking, operational disbursements, vendor contracts, cash flow | `artifact-pyramids`, `financial-modeling`, `startup-analysis` |
-| [`accounting-manager`](file:///d:/aqil/code/hermes-agent/profiles/accounting-manager/) | General ledger, double-entry bookkeeping, GAAP, tax compliance | `artifact-pyramids`, `financial-modeling`, `technical-documentation` |
-| [`financial-analyst`](file:///d:/aqil/code/hermes-agent/profiles/financial-analyst/) | FinOps cloud cost optimization, SaaS metrics, cohort retention | `artifact-pyramids`, `financial-modeling`, `saas-valuation-compression`, `yfinance-data` |
+| [`cfo`](profiles/cfo/) | Financial strategy, capital runway, economic modeling, executive decisions | `artifact-pyramids`, `financial-modeling`, `executive-methodology` |
+| [`finance-manager`](profiles/finance-manager/) | Operational budget tracking, cash flow, disbursements, vendor contracts | `artifact-pyramids`, `financial-modeling`, `startup-analysis` |
+| [`accounting-manager`](profiles/accounting-manager/) | General ledger, double-entry bookkeeping, GAAP, tax compliance | `artifact-pyramids`, `financial-modeling`, `technical-documentation` |
+| [`financial-analyst`](profiles/financial-analyst/) | FinOps cloud cost optimization, SaaS metrics, cohort retention | `artifact-pyramids`, `financial-modeling`, `saas-valuation-compression`, `yfinance-data` |
 
----
-
-## Standard Profile Specification
-
-Every profile adheres to the strict 4-document specification:
-
-```text
-profiles/<role>/
-├── SOUL.md       # Identity, First Principles, Decision Heuristics, Artifact Pyramid Output Contract
-├── profile.yaml  # Machine-readable description, required skills, and recommended skills
-├── AGENTS.md     # Agent Guidance: Trigger Patterns ("User says X -> Means Y"), loading order, handoff
-└── README.md     # Human-facing profile documentation and quickstart
-```
+Every profile is strictly defined across 4 documents:
+- `SOUL.md`: Identity, first principles, decision heuristics, output contract
+- `profile.yaml`: Machine-readable description, required and recommended skills
+- `AGENTS.md`: Trigger patterns ("User says X -> Means Y"), loading order, handoff protocol
+- `README.md`: Profile documentation and quickstart
 
 ---
 
 ## Skills Architecture
 
-Skills are organized into modular domain directories under `skills/`:
+The repository contains **373 shared skills** organized into domain categories:
 
 ```text
 skills/
-├── baseline/       # antislop, ideation, artifact-pyramids
-├── engineering/    # architecture (ADRs, C4, Arc42), technology-radar, systematic-debugging,
-│                   # qa-methodology, security-audit-methodology, implementation-planning,
-│                   # technical-documentation, executive-methodology
-├── finance/        # financial-modeling, startup-analysis, saas-valuation-compression,
-│                   # yfinance-data, stock-liquidity
-├── operations/     # docker-management, site-reliability-engineering, server, web
-├── creative/       # ux-methodology, mermaid-diagrams, design
-├── knowledge/      # research, citations, note-taking
-├── productivity/   # task management, documents
-├── communications/ # email, social media
-└── media/          # audio, video processing
+├── agent-systems/          # Multi-agent coordination, session guard, token optimization
+├── antislop/               # Hardened design and copy rules for AI agents
+├── baseline/               # Core execution, ideation, artifact pyramids
+├── communications/         # Email, social media integrations
+├── creative/               # UI/UX design, visual design, animations, diagrams
+├── engineering/            # Architecture, testing, devops, database, backend/frontend
+├── finance/                # Financial modeling, FinOps, startup valuation, stock analysis
+├── knowledge/              # Research, citations, note-taking
+├── media/                  # Audio, video processing
+├── operations/             # Linux, homelab, virtualization, networking, cloud
+├── productivity/           # Office documents (xlsx, docx, pdf), workspace pipelines
+└── reverse engineering/    # Reverse engineering suite (REA)
 ```
 
-### The Output Contract: Artifact Pyramids
-
-Profiles avoid flooding the chat context with thousands of unstructured lines. Instead, complex deliverables follow the **Artifact Pyramid** convention:
-
-```text
-<engagement-output>/
-├── 00-index.md          ← Navigation index, metadata, SOURCES
-├── 01-summary/          ← L1: Executive summary, primary recommendations, ADRs
-├── 02-analysis/         ← L2: In-depth trade-off evaluations, models, matrices
-└── 03-dossiers/         ← L3: Raw logs, workbooks, test scripts, diffs
-```
-The caller receives the absolute path to `00-index.md` as the handoff pointer.
+100% of skills are mapped in the auto-dispatch routing matrix in `SOUL.md`, `SYSTEM_PROMPT.md`, and OpenCode `umi.md`. No manual skill invocation is required.
 
 ---
 
-## How to Run
+## Output Contract: Artifact Pyramids
 
-### Default Gateway (Umi)
+Complex deliverables must avoid polluting context with raw logs and unstructured dumps. Outputs follow the Artifact Pyramid convention:
+
+```text
+<engagement-output>/
+├── 00-index.md          <- Navigation index, metadata, source citations
+├── 01-summary/          <- L1: Executive summary, primary recommendations, ADRs
+├── 02-analysis/         <- L2: In-depth trade-off evaluations, models, matrices
+└── 03-dossiers/         <- L3: Raw logs, workbooks, test scripts, diffs
+```
+
+Handoff between subagents returns the path to `00-index.md` as the authoritative pointer.
+
+---
+
+## Multi-Platform Setup & Execution
+
+### 1. Hermes Agent
+Run the root orchestrator directly, or launch into a specific specialist profile:
 ```bash
+# Default gateway (Umi)
 hermes
-```
 
-### Specialist Profiles
-```bash
-# IT Core
+# Specialist profile
 hermes --profile cto
-hermes --profile project-manager
 hermes --profile backend-dev
-hermes --profile fullstack-dev
-hermes --profile frontend-dev
-hermes --profile ui-ux-designer
-hermes --profile qa-engineer
-hermes --profile pentester
 hermes --profile devops
-hermes --profile cybersecurity
-hermes --profile sysadmin
-hermes --profile repo-manager
-
-# Finance
-hermes --profile cfo
-hermes --profile finance-manager
-hermes --profile accounting-manager
-hermes --profile financial-analyst
 ```
+
+### 2. OpenCode
+Point `~/.config/opencode/opencode.json` to the workspace skills directory. OpenCode auto-loads `AGENTS.md` and discovers agent definitions in `~/.config/opencode/agents/`:
+```bash
+opencode
+```
+
+### 3. Claude Code
+Claude Code natively reads `CLAUDE.md` from the repository root:
+```bash
+claude
+```
+
+### 4. Antigravity
+Antigravity automatically consumes root `AGENTS.md` and exposes workspace tools and skills.
+
+### 5. Cursor IDE
+Cursor auto-applies rules from `.cursor/rules/karpathy-guidelines.mdc` across workspace files.
+
+### 6. Generic LLM APIs / Custom Bots (Grok, Open bot, LiteLLM)
+Load `SYSTEM_PROMPT.md` directly into the system prompt parameter of any completions request.
+
+---
+
+## Core Engineering Rules
+
+All profiles and implementations adhere to four fundamental execution principles:
+
+1. **Think Before Coding:** State assumptions explicitly. Surface trade-offs before implementing. Push back when simpler solutions exist. Stop and ask if requirements are ambiguous.
+2. **Simplicity First:** Strict YAGNI. Minimum code that solves the problem. No speculative abstractions, single-use interfaces, or premature configurability. Delete before adding.
+3. **Surgical Changes:** Touch only what must be touched. Match existing conventions. Do not touch adjacent working code. Clean up orphaned imports and variables.
+4. **Goal-Driven Execution:** Define deterministic success criteria before editing files. Verify every change with automated tests or deterministic checks.
+
+---
+
+## Customization & Forking
+
+To adapt this workspace with your own name and preferred AI orchestrator identity, follow the interactive setup guide in **[docs/CUSTOMIZE.md](docs/CUSTOMIZE.md)**. It includes a ready-to-run `grill-me` prompt that will walk through your preferences and update all configuration anchors automatically.
 
 ---
 
 ## Validation
 
-Verify that all profiles, YAML metadata, and skill references comply with standards:
+Run the profile validator to verify YAML structure, frontmatter schemas, and skill references:
 
 ```bash
 python scripts/validate_profiles.py
@@ -158,7 +182,7 @@ python scripts/validate_profiles.py
 
 Expected output:
 ```text
-Profile validation passed: 16 profiles, 247 shared skills.
+Profile validation passed: 16 profiles, 373 shared skills.
 ```
 
 ---
